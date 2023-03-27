@@ -7,6 +7,7 @@ public class InterfaceMain {
 		
 		driver.getConnection();
 		driver.showDbDetails();
+		driver.getSupportedJavaVersion();
 
 	}
 
