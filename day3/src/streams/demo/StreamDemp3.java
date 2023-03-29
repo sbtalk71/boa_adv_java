@@ -2,6 +2,7 @@ package streams.demo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 
@@ -21,8 +22,10 @@ public class StreamDemp3 {
 		empList.add(new Employee(109, "Kirti", 31000, "female"));
 		
 		//list the name of each employee
+		empList.stream().map(e->e.getName()).forEach(System.out::println);
 		
 		//sort the employees based on name (asc order)
+		empList.stream().map(e->e.getName()).sorted().forEach(System.out::println);
 		
 		//calculate the total salary of all the employees
 		
@@ -30,6 +33,11 @@ public class StreamDemp3 {
 		
 		//hike salary by 10000 for those with salary less than 30000 
 		//and collect the employees with raised salary in new collection
+		
+		empList.stream()
+		.filter(e->e.getSalary()<30000)
+		.map(e->{e.setSalary(e.getSalary()+10000); return e;})
+		.collect(Collectors.toList()).forEach(e->System.out.println(e.getName()+"-->"+e.getSalary()));
 		
 
 	}
